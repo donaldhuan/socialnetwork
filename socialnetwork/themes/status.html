@@ -1,0 +1,232 @@
+{% extends "base.html" %}
+{% block js %}
+		<script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.8.2/jquery.min.js"></script>
+		<script type="text/javascript">
+$(function () {
+    var chart;
+    var areaname = [];
+    {% for name in areaname %}
+    areaname.push('{{name}}');
+    {% endfor %}
+    $(document).ready(function() {
+        render_gb_init();
+        chart = new Highcharts.Chart({
+            chart: {
+                renderTo: 'container',
+                type: 'line'
+            },
+            title: {
+                text: '粉丝数前十地区'
+            },
+            subtitle: {
+                text: ''
+            },
+            xAxis: {
+categories:areaname 
+            },
+            yAxis: {
+                title: {
+                    text: '粉丝人数(人)'
+                }
+            },
+            tooltip: {
+                enabled: false,
+                formatter: function() {
+                    return '<b>'+ this.series.name +'</b><br/>'+
+                        this.x +': '+ this.y +'人';
+                }
+            },
+            plotOptions: {
+                line: {
+                    dataLabels: {
+                        enabled: true
+                    },
+                    enableMouseTracking: false
+                }
+            },
+            series: [{
+                name: '地区粉丝',
+                      data:{{areanum}} 
+            }]
+        });
+        var tagname = [];
+        var tagnum= [];
+    {% for t in tag %}
+    tagname.push('{{t.0}}');
+    tagnum.push({{t.1}});
+    {% endfor %}
+
+// Build the chart
+chart = new Highcharts.Chart({
+chart: {
+renderTo: 'container1',
+type: 'column'
+},
+title: {
+text: '标签分布'
+},
+subtitle: {
+text: ''
+},
+xAxis: {
+categories:tagname 
+},
+yAxis: {
+min: 0,
+title: {
+text: 'Percentage(%)'
+}
+},
+legend: {
+layout: 'vertical',
+backgroundColor: '#FFFFFF',
+align: 'left',
+verticalAlign: 'top',
+x: 100,
+y: 70,
+floating: true,
+shadow: true
+},
+tooltip: {
+formatter: function() {
+return ''+
+this.x +': '+ this.y +'%';
+}
+},
+plotOptions: {
+column: {
+pointPadding: 0.2,
+borderWidth: 0
+}
+},
+series: [{
+name: 'Tag',
+data:tagnum 
+}]
+});
+});
+});
+		</script>
+		<script type="text/javascript">
+            function render_gb_init(){
+            $(".rendergbc").hover(function () {
+                    $(this).addClass("fansbg");
+                    }, function () {
+                    $(this).removeClass("fansbg");
+                    }); 
+            }
+            </script>
+{% endblock %}
+{% block menu %}
+          <li><a href="home">首页</a></li>
+          <li class="active"><a href="status_fans">统计分析</a></li>
+          <li><a href="management_fans">微博管理</a></li>
+{% endblock %}
+{% block mainbar %}
+<script src="/themes/js/highcharts.js"></script>
+<script src="/themes/js/exporting.js"></script>
+<div class="fans_right leftB">
+<div class="guangb20">
+<div class="wrap_title1">粉丝分析</div>
+<div style="padding:0 10px  10px 10px;">
+
+
+<div class="fans_t bodersl">
+<ul>
+<li>
+<i class="fm_icon"></i>
+共有&nbsp;<span class="Tbb">25111</span>&nbsp;粉丝
+</li>
+<li>
+<i class="ff_icon"></i>
+僵尸粉丝&nbsp;<span class="Tbb">401</span>&nbsp;人
+</li>
+<li>
+<i class="fh_icon"></i>
+活跃粉丝&nbsp;<span class="Tbb">7051</span>&nbsp;人
+</li>
+</ul>
+</div>
+
+<div class="fans_list rendergbc">
+<b>性别</b>
+<span class="man_i">{{male}}%</span>
+<span class="man_female">{{female}}%</span>
+</div>
+
+<div class="fans_list1 rendergbc">
+<b>年龄</b>
+<div class="fans_n">
+<ul>
+<li>
+<span class="bigDot">{{age.0}}%</span>
+<p align="center"><18岁</p>
+</li>
+<li>
+<span class="bigDot">{{age.1}}%</span>
+<p align="center">18-24岁</p>
+</li>
+<li>
+<span class="bigDot">{{age.2}}%</span>
+<p align="center">25-34岁</p>
+</li>
+<li>
+<span class="bigDot">{{age.3}}%</span>
+<p align="center">>34岁</p>
+</li>
+</ul>
+</div>
+<div class="clear"></div>
+</div>
+
+
+<div class="fans_list1 rendergbc">
+<b>终端</b>
+<div class="fans_n">
+<ul>
+    {% for s in source %}
+<li>
+<span class="bigDot">{{s.1}}%</span>
+<p align="center">{{s.0}}</p>
+</li>
+{% endfor %}
+</ul>
+</div>
+<div class="clear"></div>
+</div>
+
+<div class="fans_list1">
+<b>标签分布</b>
+    <div id="container1" style="min-width: 600px; height: 400px; margin: 0 auto"></div>
+<div class="clear"></div>
+</div>
+
+<div class="fans_list1">
+    <b>地域</b>
+    <div id="container" style="min-width: 600px; height: 400px; margin: 0 auto"></div>
+<div class="clear"></div>
+<div class="clear"></div>
+</div>
+
+</div>
+<div class="clear"></div>
+</div>
+<div class="clear"></div>
+</div>
+
+
+{% endblock %}
+{% block sidebar %}
+        <div class="gadget">
+          <B style="font:bold 24px Arial, Helvetica, sans-serif; color:#323a3f; padding:8px 0; margin:8px 0;">统计分析</B>
+          <ul class="sb_menu">
+            <li class="active"><a href="status_fans">粉丝分析</a></li>
+          </ul>
+        </div>
+{% endblock %}
+
+
+
+
+
+

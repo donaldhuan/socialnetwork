@@ -1,0 +1,88 @@
+!_TAG_FILE_FORMAT	2	/extended format; --format=1 will not append ;" to lines/
+!_TAG_FILE_SORTED	1	/0=unsorted, 1=sorted, 2=foldcase/
+!_TAG_PROGRAM_AUTHOR	Darren Hiebert	/dhiebert@users.sourceforge.net/
+!_TAG_PROGRAM_NAME	Exuberant Ctags	//
+!_TAG_PROGRAM_URL	http://ctags.sourceforge.net	/official site/
+!_TAG_PROGRAM_VERSION	5.8	//
+ADMINS	settings.py	/^ADMINS = ($/;"	v
+ADMINS	socialnetwork/settings.py	/^ADMINS = ($/;"	v
+ADMIN_MEDIA_PREFIX	settings.py	/^ADMIN_MEDIA_PREFIX = '\/static\/admin\/'$/;"	v
+ADMIN_MEDIA_PREFIX	socialnetwork/settings.py	/^ADMIN_MEDIA_PREFIX = '\/static\/admin\/'$/;"	v
+DATABASES	settings.py	/^DATABASES = {$/;"	v
+DATABASES	socialnetwork/settings.py	/^DATABASES = {$/;"	v
+DEBUG	settings.py	/^DEBUG = True$/;"	v
+DEBUG	socialnetwork/settings.py	/^DEBUG = True$/;"	v
+INSTALLED_APPS	settings.py	/^INSTALLED_APPS = ($/;"	v
+INSTALLED_APPS	socialnetwork/settings.py	/^INSTALLED_APPS = ($/;"	v
+LANGUAGE_CODE	settings.py	/^LANGUAGE_CODE = 'en-us'$/;"	v
+LANGUAGE_CODE	socialnetwork/settings.py	/^LANGUAGE_CODE = 'en-us'$/;"	v
+LOGGING	settings.py	/^LOGGING = {$/;"	v
+LOGGING	socialnetwork/settings.py	/^LOGGING = {$/;"	v
+MANAGERS	settings.py	/^MANAGERS = ADMINS$/;"	v
+MANAGERS	socialnetwork/settings.py	/^MANAGERS = ADMINS$/;"	v
+MEDIA_ROOT	settings.py	/^MEDIA_ROOT = ''$/;"	v
+MEDIA_ROOT	socialnetwork/settings.py	/^MEDIA_ROOT = ''$/;"	v
+MEDIA_URL	settings.py	/^MEDIA_URL = ''$/;"	v
+MEDIA_URL	socialnetwork/settings.py	/^MEDIA_URL = ''$/;"	v
+MIDDLEWARE_CLASSES	settings.py	/^MIDDLEWARE_CLASSES = ($/;"	v
+MIDDLEWARE_CLASSES	socialnetwork/settings.py	/^MIDDLEWARE_CLASSES = ($/;"	v
+MySQLdb	sqlconn.py	/^import MySQLdb$/;"	i
+ROOT_URLCONF	settings.py	/^ROOT_URLCONF = 'socialnetwork.urls'$/;"	v
+ROOT_URLCONF	socialnetwork/settings.py	/^ROOT_URLCONF = 'socialnetwork.urls'$/;"	v
+SECRET_KEY	settings.py	/^SECRET_KEY = ''$/;"	v
+SECRET_KEY	socialnetwork/settings.py	/^SECRET_KEY = ''$/;"	v
+SITE_ID	settings.py	/^SITE_ID = 1$/;"	v
+SITE_ID	socialnetwork/settings.py	/^SITE_ID = 1$/;"	v
+STATICFILES_DIRS	settings.py	/^STATICFILES_DIRS = ($/;"	v
+STATICFILES_DIRS	socialnetwork/settings.py	/^STATICFILES_DIRS = ($/;"	v
+STATICFILES_FINDERS	settings.py	/^STATICFILES_FINDERS = ($/;"	v
+STATICFILES_FINDERS	socialnetwork/settings.py	/^STATICFILES_FINDERS = ($/;"	v
+STATIC_ROOT	settings.py	/^STATIC_ROOT = ''$/;"	v
+STATIC_ROOT	socialnetwork/settings.py	/^STATIC_ROOT = ''$/;"	v
+STATIC_URL	settings.py	/^STATIC_URL = '\/static\/'$/;"	v
+STATIC_URL	socialnetwork/settings.py	/^STATIC_URL = '\/static\/'$/;"	v
+SimpleTest	weibo/tests.py	/^class SimpleTest(TestCase):$/;"	c
+TEMPLATE_DEBUG	settings.py	/^TEMPLATE_DEBUG = DEBUG$/;"	v
+TEMPLATE_DEBUG	socialnetwork/settings.py	/^TEMPLATE_DEBUG = DEBUG$/;"	v
+TEMPLATE_DIRS	settings.py	/^TEMPLATE_DIRS = ($/;"	v
+TEMPLATE_DIRS	socialnetwork/settings.py	/^TEMPLATE_DIRS = ($/;"	v
+TEMPLATE_LOADERS	settings.py	/^TEMPLATE_LOADERS = ($/;"	v
+TEMPLATE_LOADERS	socialnetwork/settings.py	/^TEMPLATE_LOADERS = ($/;"	v
+TIME_ZONE	settings.py	/^TIME_ZONE = 'America\/Chicago'$/;"	v
+TIME_ZONE	socialnetwork/settings.py	/^TIME_ZONE = 'America\/Chicago'$/;"	v
+TestCase	weibo/tests.py	/^from django.test import TestCase$/;"	i
+USE_I18N	settings.py	/^USE_I18N = True$/;"	v
+USE_I18N	socialnetwork/settings.py	/^USE_I18N = True$/;"	v
+USE_L10N	settings.py	/^USE_L10N = True$/;"	v
+USE_L10N	socialnetwork/settings.py	/^USE_L10N = True$/;"	v
+application	socialnetwork/wsgi.py	/^application = get_wsgi_application()$/;"	v
+conn	sqlconn.py	/^conn = MySQLdb.connect(host='localhost', user='root', passwd='', db='weibo', port=3306, charset='utf8')$/;"	v
+cur	sqlconn.py	/^cur = conn.cursor()$/;"	v
+execute_from_command_line	manage.py	/^    from django.core.management import execute_from_command_line$/;"	i
+get_wsgi_application	socialnetwork/wsgi.py	/^from django.core.wsgi import get_wsgi_application$/;"	i
+home	weibo/views.py	/^def home(request):$/;"	f
+include	socialnetwork/urls.py	/^from django.conf.urls import patterns, include, url$/;"	i
+include	urls.py	/^from django.conf.urls import patterns, include, url$/;"	i
+include	weibo/urls.py	/^from django.conf.urls import patterns, include, url$/;"	i
+models	weibo/models.py	/^from django.db import models$/;"	i
+os	manage.py	/^import os$/;"	i
+os	settings.py	/^import os$/;"	i
+os	socialnetwork/settings.py	/^import os$/;"	i
+os	socialnetwork/urls.py	/^import os$/;"	i
+os	socialnetwork/wsgi.py	/^import os$/;"	i
+os	t1.py	/^import os$/;"	i
+os	urls.py	/^import os$/;"	i
+patterns	socialnetwork/urls.py	/^from django.conf.urls import patterns, include, url$/;"	i
+patterns	urls.py	/^from django.conf.urls import patterns, include, url$/;"	i
+patterns	weibo/urls.py	/^from django.conf.urls import patterns, include, url$/;"	i
+render_to_response	weibo/views.py	/^from django.shortcuts import render_to_response$/;"	i
+res	sqlconn.py	/^res = cur.fetchone()$/;"	v
+status_fans	weibo/views.py	/^def status_fans(request):$/;"	f
+sys	manage.py	/^import sys$/;"	i
+test_basic_addition	weibo/tests.py	/^    def test_basic_addition(self):$/;"	m	class:SimpleTest
+url	socialnetwork/urls.py	/^from django.conf.urls import patterns, include, url$/;"	i
+url	urls.py	/^from django.conf.urls import patterns, include, url$/;"	i
+url	weibo/urls.py	/^from django.conf.urls import patterns, include, url$/;"	i
+urlpatterns	socialnetwork/urls.py	/^urlpatterns = patterns('',$/;"	v
+urlpatterns	urls.py	/^urlpatterns = patterns('',$/;"	v
+urlpatterns	weibo/urls.py	/^urlpatterns = patterns('weibo.views',$/;"	v
