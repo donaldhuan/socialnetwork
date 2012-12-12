@@ -88,6 +88,14 @@ text-decoration:none;
 a.uiButton{background-image: url(../images/myspace/buttonbgg.png);}
 a.uiButton:hover {text-decoration: none;}
 
+.selectitem{
+    color:#4598D2;
+}
+
+.selectitem:hover, .selectw{
+    background: #4598D2;color: white;text-decoration: none;
+}
+
 .listw{
     height: 27px;
     line-height: 25px;

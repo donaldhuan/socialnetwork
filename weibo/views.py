@@ -77,7 +77,6 @@ def status_fans(request):
     tag = []
     for t in tagdic:
         tag.append((t[0].encode('utf8'), round(t[1] / sum, 4) * 100))
-    print tag
 
     #close the cursor
     cursor.close()
@@ -89,4 +88,24 @@ def status_fans(request):
 
 #have a global look at the fans
 def management_fans(request):
-    return render_to_response('management_fans.html')
+    p = 0
+    type = 'null'
+    if request.GET.has_key('p'):
+        p = request.GET['p']
+    if request.GET.has_key('type'):
+        type = request.GET['type']
+    #connect to the mysql
+    conn = mysqlconn.dbconn()
+    cursor = conn.cursor()
+    sql = 'select user.screenname, user.sex, user.address, user.fansnumber, user.id from user, user_vector where user.id = user_vector.uid order by '+type+' desc limit '+str(int(p)*20)+',20;'
+    cursor.execute(sql)
+    fans = cursor.fetchall()
+    print fans
+
+    #close the cursor
+    cursor.close()
+    #disconnet the link to mysql db
+    mysqlconn.dbclose(conn)
+    
+
+    return render_to_response('management_fans.html', {'fans':fans, 'page':int(p), 'type':type})

@@ -1,5 +1,51 @@
 {% extends "base.html" %}
 {% block js %}
+<script type="text/javascript">
+$(function () {
+    $(document).ready(function() {
+        changebg();
+        render_gb_init();
+        });
+    });
+    var URL = window.location.href;
+    function changeSearch(op,np){
+        var oldstr = "p="+op;
+        var newstr = "p="+np;
+        if (URL.indexOf(oldstr)==-1){
+            if (URL.indexOf("?")!=-1){
+                return URL+"&"+newstr;
+            }
+            else{
+                return URL+"?"+newstr;
+            }
+        }
+        else{
+            return URL.replace(oldstr,newstr);
+        }
+    }
+    function next(){
+        var url = changeSearch({{page}},{{page}}+1);
+        window.location.assign(url);
+    }
+    function front(){
+        if ({{page}}!=0){
+            var url = changeSearch({{page}},{{page}}-1);
+            window.location.assign(url);
+        }
+    }
+            function render_gb_init(){
+            $(".cropTrCls").hover(function () {
+                    $(this).addClass("mkt_t_bg");
+                    }, function () {
+                    $(this).removeClass("mkt_t_bg");
+                    }); 
+            }
+    
+function changebg(){
+    //function(){$(".it").addClass("selectw");}
+    document.getElementById("{{type}}").className="selectw";
+}
+</script>
 {% endblock %}
 {% block menu %}
 <li><a href="home">首页</a></li>
@@ -9,102 +55,64 @@
 {% block mainbar %}
 <div class="fans_right leftB">
 <div class="guangb10">
-<a href="javascript:void(0);" onclick="return false;" id="groupSentBtn" title="群发信息" class="o_next leftB">群发信息</a>
-<span class="leftB" style='line-height:27px; display:none;' >已选中<span class="Tr" id="selectNum">0</span>条</span>
-<div class="listw rightB" style="z-index:110;border-left:0px;" id="locationBtnDiv">
-<span class="listw_text" attrval="" id="locationtitle">选择地域</span>
-<div class="listwm2 none" id="locationChList">
-<div class="listwm2_g">
-<ul>
-<li><a href="javascript:void(0);" onclick="return false;" attrval="" class="locationBtncls"><span>不限</span></a></li>
+    <div class="clear"></div>
+    <b>兴趣</b>
+    <table align="right" cellpadding="10" cellspacing="0" border="0"  style="width:90%">
+      <colgroup>
+        <col width="15%" />
+        <col width="15%" />
+        <col width="15%" />
+        <col width="15%" />
+        <col width="15%" />
+        <col width="15%" />
+     </colgroup>
+        <tr>
+        <td align="left">
+            <a class="selectitem" id="null" href="management_fans">不限</a>
+        </td>
+        <td align="left">
+            <a class="selectitem" id="entertainment" href="?type=entertainment">娱乐传媒</a>
+        </td>
+        <td align="left">
+            <a class="selectitem" id="fansion" href="?type=fansion">时尚妆品</a>
+        </td>
+        <td align="left">
+            <a class="selectitem" id="literature" href="?type=literature">文学艺术</a>
+        </td>
+        <td align="left">
+            <a class="selectitem" id="it" href="?type=it">IT界</a>
+        </td>
+        <td align="left">
+            <a class="selectitem" id="sports" href="?type=sports">体育</a>
+        </td>
+        </tr>
+        <tr>
+        <td align="left">
+            <a class="selectitem" id="games" href="?type=games">游戏动漫</a>
+        </td>
+        <td align="left">
+            <a class="selectitem" id="finance" href="?type=finance">金融地产汽车</a>
+        </td>
+        <td align="left">
+            <a class="selectitem" id="qualitylife" href="?type=qualitlife">品质生活</a>
+        </td>
+        <td align="left">
+            <a class="selectitem" id="shoppingonline" href="?type=shoppingonline">网购</a>
+        </td>
+        <td align="left">
+            <a class="selectitem" id="science" href="?type=science">科教公益</a>
+        </td>
+        <td align="left">
+            <a class="selectitem" id="service" href="?type=service">公共服务</a>
+        </td>
+        </tr>
+    </table>
 
-<li><a href="javascript:void(0);" onclick="return false;" attrval="p1" class="locationBtncls"><span>北京</span></a></li>
 
-<li><a href="javascript:void(0);" onclick="return false;" attrval="p2" class="locationBtncls"><span>上海</span></a></li>
-
-<li><a href="javascript:void(0);" onclick="return false;" attrval="p3" class="locationBtncls"><span>天津</span></a></li>
-
-<li><a href="javascript:void(0);" onclick="return false;" attrval="p4" class="locationBtncls"><span>重庆</span></a></li>
-
-<li><a href="javascript:void(0);" onclick="return false;" attrval="p5" class="locationBtncls"><span>黑龙江</span></a></li>
-
-<li><a href="javascript:void(0);" onclick="return false;" attrval="p6" class="locationBtncls"><span>吉林</span></a></li>
-
-<li><a href="javascript:void(0);" onclick="return false;" attrval="p7" class="locationBtncls"><span>辽宁</span></a></li>
-
-<li><a href="javascript:void(0);" onclick="return false;" attrval="p8" class="locationBtncls"><span>山东</span></a></li>
-
-<li><a href="javascript:void(0);" onclick="return false;" attrval="p9" class="locationBtncls"><span>山西</span></a></li>
-
-<li><a href="javascript:void(0);" onclick="return false;" attrval="p10" class="locationBtncls"><span>陕西</span></a></li>
-
-<li><a href="javascript:void(0);" onclick="return false;" attrval="p11" class="locationBtncls"><span>河北</span></a></li>
-
-<li><a href="javascript:void(0);" onclick="return false;" attrval="p12" class="locationBtncls"><span>河南</span></a></li>
-
-<li><a href="javascript:void(0);" onclick="return false;" attrval="p13" class="locationBtncls"><span>湖北</span></a></li>
-
-<li><a href="javascript:void(0);" onclick="return false;" attrval="p14" class="locationBtncls"><span>湖南</span></a></li>
-
-<li><a href="javascript:void(0);" onclick="return false;" attrval="p15" class="locationBtncls"><span>海南</span></a></li>
-
-<li><a href="javascript:void(0);" onclick="return false;" attrval="p16" class="locationBtncls"><span>江苏</span></a></li>
-
-<li><a href="javascript:void(0);" onclick="return false;" attrval="p17" class="locationBtncls"><span>江西</span></a></li>
-
-<li><a href="javascript:void(0);" onclick="return false;" attrval="p18" class="locationBtncls"><span>广东</span></a></li>
-
-<li><a href="javascript:void(0);" onclick="return false;" attrval="p19" class="locationBtncls"><span>广西</span></a></li>
-
-<li><a href="javascript:void(0);" onclick="return false;" attrval="p20" class="locationBtncls"><span>云南</span></a></li>
-
-<li><a href="javascript:void(0);" onclick="return false;" attrval="p21" class="locationBtncls"><span>贵州</span></a></li>
-
-<li><a href="javascript:void(0);" onclick="return false;" attrval="p22" class="locationBtncls"><span>四川</span></a></li>
-
-<li><a href="javascript:void(0);" onclick="return false;" attrval="p23" class="locationBtncls"><span>内蒙古</span></a></li>
-
-<li><a href="javascript:void(0);" onclick="return false;" attrval="p24" class="locationBtncls"><span>宁夏</span></a></li>
-
-<li><a href="javascript:void(0);" onclick="return false;" attrval="p25" class="locationBtncls"><span>甘肃</span></a></li>
-
-<li><a href="javascript:void(0);" onclick="return false;" attrval="p26" class="locationBtncls"><span>青海</span></a></li>
-
-<li><a href="javascript:void(0);" onclick="return false;" attrval="p27" class="locationBtncls"><span>西藏</span></a></li>
-
-<li><a href="javascript:void(0);" onclick="return false;" attrval="p28" class="locationBtncls"><span>新疆</span></a></li>
-
-<li><a href="javascript:void(0);" onclick="return false;" attrval="p29" class="locationBtncls"><span>安徽</span></a></li>
-
-<li><a href="javascript:void(0);" onclick="return false;" attrval="p30" class="locationBtncls"><span>浙江</span></a></li>
-
-<li><a href="javascript:void(0);" onclick="return false;" attrval="p31" class="locationBtncls"><span>福建</span></a></li>
-
-<li><a href="javascript:void(0);" onclick="return false;" attrval="p32" class="locationBtncls"><span>台湾</span></a></li>
-
-<li><a href="javascript:void(0);" onclick="return false;" attrval="p33" class="locationBtncls"><span>香港</span></a></li>
-
-<li><a href="javascript:void(0);" onclick="return false;" attrval="p34" class="locationBtncls"><span>澳门</span></a></li>
-
-</ul>
-</div>
-</div>
-</div>
-<div class="listw rightB" style="z-index:110;" id="sexBtnDiv">
-<span class="listw_text" attrval="" id="sextitle">选择性别</span>
-<div class="listwm1 none" id="sexChList">
-<ul>
-<li><a href="javascript:void(0);" onclick="return false;" attrval="0" class="sexBtncls"><span>不限</span></a></li>
-<li><a href="javascript:void(0);" onclick="return false;" attrval="1" class="sexBtncls"><span>男</span></a></li>
-<li><a href="javascript:void(0);" onclick="return false;" attrval="2" class="sexBtncls"><span>女</span></a></li>
-</ul>
-</div>
-</div>
-<div class="listhdd  " style="z-index:110;">
-<input name="" type="checkbox" value="" id="kudonginput" /> 互动用户
-</div> 
 <div class="clear"></div>                                   
+
 </div>
+
 <div class="guangb20">
 <div class="wrap_dott">
 <div class="list_b1" style="margin:0px;">
@@ -112,8 +120,7 @@
 <table width="100%" border="0" cellpadding="0" cellspacing="1">
 <tr>
 
-<td align="center" bgcolor="#F2F2F2" class="ltitle">客户头像</td>
-<td align="center" bgcolor="#F2F2F2" class="ltitle">客户名</td>
+<td align="center" bgcolor="#F2F2F2" class="ltitle">粉丝名</td>
 <!-- <td align="center" bgcolor="#F2F2F2" class="ltitle">认证</td> -->
 <td align="center" bgcolor="#F2F2F2" class="ltitle">性别</td>
 <td align="center" bgcolor="#F2F2F2" class="ltitle">地域</td>
@@ -121,35 +128,19 @@
 
 <!-- <td align="center" bgcolor="#F2F2F2" class="ltitle">操作</td>  -->
 </tr>
-
+{% for fan in fans %}
 <tr class="cropTrCls " >
-<td align="center" class="logoRendTd"><div class="hudong_g1" style="z-index:100">
-<div class="W_layer" style="left: 70px;top: 0px; display:none;">
-<div class="bg">
-<div class="layer_g">
-<div class="layer_intro">
-<div class="listPic"><a href="javascript:void(0);" class="linker-weibo-hre" uid="1274815437"><img  src="http://tp2.sinaimg.cn/1274815437/50/5609996613/0" width="50" height="50" /></a></div>
-<div class="leftB" style="width:260px;">
-<p><a href="javascript:void(0);" class="linker-weibo-hre" uid="1274815437">慧滋滋</a></p>
-<p><span>河南&nbsp;&nbsp;郑州</span></p>
-
-
-</div>
-<div class="clear"></div>   
-</div>
-
-</div>
-</div>
-</div>
-<a href="javascript:void(0);" class="linker-weibo-hre" uid="1274815437"><img src="http://tp2.sinaimg.cn/1274815437/50/5609996613/0" width="35" height="35" /></a></div></td>
-<td align="center" nickname="true"><a href="javascript:void(0);" class="linker-weibo-hre" uid="1274815437">慧滋滋&nbsp;</a></td>
-<!-- <td align="center"><span class=""></span></td> -->
-<td align="center">女</td>
-<td align="center">河南&nbsp;&nbsp;郑州&nbsp;</td>
-<td align="center"><span class="Tb">93</span></td>
-
-<!-- <td align="center"><a href="javascript:void(0);" class="icon_shixing" title="发信息"></a></td> -->
+    <td align="center" nickname="true"><a href="http://weibo.com/u/{{fan.4}}" class="linker-weibo-hre">{{fan.0}}</a></td>
+    {% if fan.1 = 'm' %}
+    <td align="center">男</td>
+    {%else%}
+    <td align="center">女</td>
+    {%endif%}
+<td align="center">{{fan.2}}</td>
+<td align="center"><span class="Tb">{{fan.3}}</span></td>
 </tr>
+{% endfor %}
+
 </table>
 <div class="clear"></div>
 </div>
@@ -157,8 +148,8 @@
 </div>
 
 <div class="s_list_n rightB">
-<a href="javascript:void(0);" onclick="linePage(1,409);return false;" class="l_front" >上一页</a>
-<a href="javascript:void(0);" onclick="linePage(3,409);return false;" class="l_next" >下一页</a>
+<a href="javascript:void(0);" onclick="front()" class="l_front" >上一页</a>
+<a href="javascript:void(0);" onclick="next()" class="l_next" >下一页</a>
 </div>
 
 <div class="clear"></div>
