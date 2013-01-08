@@ -49,8 +49,9 @@ function changebg(){
 {% endblock %}
 {% block menu %}
 <li><a href="home">首页</a></li>
-<li><a href="status_fans">统计分析</a></li>
-<li class="active"><a href="management_fans">微博管理</a></li>
+<li class="active"><a href="status_fans">统计分析</a></li>
+<li><a href="">场景营销</a></li>
+<li><a href="weibotools">微博工具</a></li>
 {% endblock %}
 {% block mainbar %}
 <div class="fans_right leftB">
@@ -160,4 +161,13 @@ function changebg(){
 
 {% endblock %}
 {%block sidebar %}
+        <div class="gadget">
+          <B style="font:bold 24px Arial, Helvetica, sans-serif; color:#323a3f; padding:8px 0; margin:8px 0;">统计分析</B>
+          <ul class="sb_menu">
+            <li><a href="status_fans">粉丝分析</a></li>
+          </ul>
+          <ul class="sb_menu">
+            <li class="active"><a href="management_fans">粉丝管理</a></li>
+          </ul>
+        </div>
 {% endblock %}
