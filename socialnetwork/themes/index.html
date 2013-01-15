@@ -1,11 +1,55 @@
-{% extends "base.html" %}
+{% extends "base_nosidebar.html" %}
 {% block menu %}
+<!--
 <li class="active"><a href="home">首页</a></li>
 <li><a href="status_fans">统计分析</a></li>
 <li><a href="">场景营销</a></li>
 <li><a href="weibotools">微博工具</a></li>
+-->
 {% endblock %}
-{% block mainbar %}
-{% endblock %}
-{%block sidebar %}
+{% block content %}
+<script language="javascript">
+    var on;
+    var off;
+    if (document.images)
+    {
+        on = new Image();
+        off = new Image();
+    }
+    function On(id){
+        document.images['img'+id].src="/themes/images/analytics_l.png";
+    }
+    function Off(id){
+        document.images['img'+id].src="/themes/images/analytics.png";
+    }
+</script>
+<div>
+    <table style="width:99%">
+        <colgroup>
+            <col width="33%" />
+            <col width="33%" />
+            <col width="33%" />
+        </colgroup>
+        <tr>
+            <td align="center"><a href="status_fans" onMouseOver="On(0)" onMouseOut="Off(0)"><img src="/themes/images/analytics.png" style="border:none" name="img0"/></a></td>
+            <td align="center"><a href=""><img src="/themes/images/market.png" style="border:none"/></a></td>
+            <td align="center"><a href="weibotools"><img src="/themes/images/tools.png" style="border:none"></a></td>
+        </tr>
+        <tr>
+            <td align="center"><b style="font-family:verdana;font-size:20px;color:dodgerblue">粉丝运维</b></td>
+            <td align="center"><b style="font-family:verdana;font-size:20px;color:dodgerblue">场景营销</b></td>
+            <td align="center"><b style="font-family:verdana;font-size:20px;color:dodgerblue">实用工具</b></td>
+        </tr>
+        <tr>
+            <td align="center"><b style="color:grey">自有粉丝的评论等管理</b></td>
+            <td align="center"><b style="color:grey">基于不同场景的商品营销</b></td>
+            <td align="center"><b style="color:grey">开放给普通用户试用的实用工具</b></td>
+        </tr>
+        <tr>
+            <td>
+                <div></div>
+            </td>
+        </tr>
+    </table>
+</div>
 {% endblock %}

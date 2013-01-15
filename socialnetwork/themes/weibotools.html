@@ -1,12 +1,21 @@
 {% extends "base_nosidebar.html" %}
 {% block js %}
 <script type="text/javascript" src="/themes/js/sigma.min.js"></script>
+<script type="text/javascript">
+function formsubmit(){
+document.forms[0].submit();
+}
+</script>
 {% endblock %}
 {% block menu %}
+<div class="menu_nav"> 
+<ul>
 <li><a href="home">首页</a></li>
-<li><a href="status_fans">统计分析</a></li>
+<li><a href="status_fans">粉丝运维</a></li>
 <li><a href="">场景营销</a></li>
-<li class="active"><a href="weibotools">微博工具</a></li>
+<li class="active"><a href="weibotools">实用工具</a></li>
+</ul>
+</div>
 {% endblock %}
 {% block content %}
 <table width="100%" border="0" cellpadding="0" cellspacing="0">
@@ -21,8 +30,10 @@
             			<td>
             			<div>
             				<div>
-            					<input type="text" name="seachtext" style="width:500px; height:30px;font-size:22px">
-            					<input type="submit" style="height="30px">
+            				<form name="weibourl" id="weibourl" action="" method="get">
+            					<input type="text" name="searchurl" style="width:500px; height:30px;font-size:22px">
+            					<input type="image" src="/themes/images/submit.png" name="submit" onclick="formsubmit()">
+            				</form>
             				</div>
             			<div class="clr"></div>
             			</div>
@@ -65,7 +76,7 @@
 
   // Parse a GEXF encoded file to fill the graph
   // (requires "sigma.parseGexf.js" to be included)
-  sigInst.parseGexf('/themes/example.gexf');
+  sigInst.parseGexf('{{gexfURI}}');
 
   // Bind events :
   var greyColor = '#666';

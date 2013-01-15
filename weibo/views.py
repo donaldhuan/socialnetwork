@@ -4,6 +4,9 @@ from __future__ import division #true division
 from django.shortcuts import render_to_response
 import time
 import mysqlconn
+from getpincode import get_pincode
+from tools import WeiboSpreadPath
+import os
 
 def home(request):
     return render_to_response('index.html')
@@ -109,3 +112,25 @@ def management_fans(request):
     
 
     return render_to_response('management_fans.html', {'fans':fans, 'page':int(p), 'type':type})
+
+
+def weibotools(request):
+    #get url that need to be searched
+    if request.GET.has_key('searchurl'):
+        url = request.GET['searchurl']
+        try:
+            path = WeiboSpreadPath(get_pincode(), url)
+            id = path.get_weiboid_from_url()
+            #generate gexf file
+            filename = os.getcwd() + '/weibo/gexf/' + str(id) + '_' + url.split('/')[-2]
+            gexfURI = '/themes/gexf/' + str(id) + '_' + url.split('/')[-2] + '.gexf'
+            #judge whether the gexf file is already existed
+            if os.path.exists(filename+'.gexf') is not True:
+                path.generate_gexf(filename, path.get_edges(post_id=id))
+            return render_to_response('weibotools.html', {'gexfURI':gexfURI})
+        except:
+            errormsg = "Invalid url."
+            return render_to_response('weibotools.html', {'error':errormsg})
+
+
+    return render_to_response('weibotools.html')
